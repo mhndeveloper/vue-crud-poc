@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify';
 import Vuelidate from 'vuelidate';
 import ApolloClient from 'apollo-boost'
 import VueApollo from "vue-apollo";
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.config.productionTip = false
 Vue.use(Vuelidate);

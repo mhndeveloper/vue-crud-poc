@@ -16,10 +16,12 @@
             :rules="[required('Cliente'), maxLength('Cliente', 255)]"
             label="Cliente"
           ></v-text-field>
-           <v-date-picker v-model="model.data" locale="pt-BR"></v-date-picker>
+          <v-row justify="center">
+          <v-date-picker v-model="model.data" locale="pt-BR"></v-date-picker>
+          </v-row>
           <v-btn
                   color="success"
-                  class="mr-4"
+                  class="mt-4"
                   @click="addItem">Adicionar Item</v-btn>
           <v-simple-table
               fixed-header
