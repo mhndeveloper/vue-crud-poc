@@ -11,7 +11,7 @@ Vue.use(VueApollo);
 
 const apolloProvider = new VueApollo({
   defaultClient: new ApolloClient({
-    uri: 'http://localhost:8080/v1/graphql'
+    uri: 'https://vue-crud-poc.herokuapp.com/v1/graphql'
   })
 });
 
