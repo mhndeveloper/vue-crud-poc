@@ -52,17 +52,17 @@
                         :rules="[required('Descrição'), maxLength('Nº Pedido', 50)]"
                       ></v-text-field></td>
                     <td>
-                      <v-text-field v-model="item.quantidade"
+                      <v-text-field v-model="item.quantidade" type="number"
                         :rules="[required('Quantidade')]"
                       ></v-text-field>
                     </td>
                     <td>
-                      <v-text-field v-model="item.valor_unitario"
+                      <v-text-field v-model="item.valor_unitario" type="number"
                         :rules="[required('Valor Unitário')]"
                       ></v-text-field>
                     </td>
                     <td>
-                      <v-text-field v-model="item.valor_total"
+                      <v-text-field v-model="item.valor_total" type="number"
                         :rules="[required('Valor Total')]"
                       ></v-text-field>
                     </td>
@@ -91,19 +91,30 @@
 </template>
 <script>
 import gql from 'graphql-tag';
+
 const ADD_PEDIDO = gql`
-  mutation add_pedido($cliente:String!,$data:date!,$numero:String!,$valor_total:numeric!) {
-      insert_pedido(objects: {cliente: $cliente, data: $data, numero: $numero, valor_total: $valor_total, reservar: false}) {
-      returning {
-        cliente
-        data
-        id
-        numero
-        valor_total
-      }
+  mutation add_pedido($cliente:String!,$data:date!,$numero:String!,$valor_total:numeric!, $item_pedidos:[item_pedido_insert_input!]! ) {
+      insert_pedido(objects: {cliente: $cliente, data: $data, numero: $numero, valor_total: $valor_total, reservar: false, item_pedidos: {data: $item_pedidos }}) {
+        returning {
+          cliente
+          data
+          id
+          numero
+          reservar
+          valor_total
+          item_pedidos {
+            descricao
+            id
+            id_pedido
+            quantidade
+            valor_total
+            valor_unitario
+          }
+        }
     }
 }
-`
+`;
+
 export default {
      name : "Crud",
      data: () => ({
@@ -121,11 +132,10 @@ export default {
         data : new Date().toISOString().substring(0,10),
         valor_total: '',
         itens:[{
-            id:'',
-            descricao:'',
-            quantidade:'',
-            valor_unitario:'',
-            valor_total:''
+          descricao: '',
+          quantidade: Number(0),
+          valor_unitario: Number(0),
+          valor_total: Number(0)
         }]
       },
      
@@ -136,11 +146,10 @@ export default {
       },
       addItem(){
         this.model.itens.push({
-            id:'',
-            descricao:'',
-            quantidade:'',
-            valor_unitario:'',
-            valor_total:''
+          descricao: '',
+          quantidade: Number(0),
+          valor_unitario: Number(0),
+          valor_total: Number(0)
         })
       },
       removeItem(item){
@@ -153,7 +162,8 @@ export default {
             cliente : this.model.cliente,
             numero : this.model.numero,
             data : this.model.data,
-            valor_total : this.model.valor_total
+            valor_total : this.model.valor_total,
+            item_pedidos: this.model.itens
           },
         })
       }
