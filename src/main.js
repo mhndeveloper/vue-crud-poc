@@ -1,8 +1,22 @@
 import Vue from 'vue'
 import App from './App.vue'
+import vuetify from './plugins/vuetify';
+import Vuelidate from 'vuelidate';
+import ApolloClient from 'apollo-boost'
+import VueApollo from "vue-apollo";
 
 Vue.config.productionTip = false
+Vue.use(Vuelidate);
+Vue.use(VueApollo);
+
+const apolloProvider = new VueApollo({
+  defaultClient: new ApolloClient({
+    uri: 'http://localhost:8080/v1/graphql'
+  })
+});
 
 new Vue({
-  render: h => h(App),
+  vuetify,
+  apolloProvider,
+  render: h => h(App)
 }).$mount('#app')
