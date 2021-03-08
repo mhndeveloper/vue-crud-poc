@@ -1,23 +1,23 @@
 <template>
   <v-app>
     <v-main>
-      <Crud/>
+      <Crud />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Crud from './components/Crud';
+import Crud from "./components/Crud";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    Crud,
+    Crud
   },
 
   data: () => ({
     //
-  }),
+  })
 };
 </script>
