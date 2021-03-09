@@ -1,0 +1,977 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: query_root
+    mutation: mutation_root
+    subscription: subscription_root
+}
+
+"columns and relationships of \"item_pedido\""
+type item_pedido {
+    descricao: String!
+    id: Int!
+    id_pedido: Int!
+    quantidade: numeric!
+    valor_total: numeric!
+    valor_unitario: numeric!
+}
+
+"aggregated selection of \"item_pedido\""
+type item_pedido_aggregate {
+    aggregate: item_pedido_aggregate_fields
+    nodes: [item_pedido!]!
+}
+
+"aggregate fields of \"item_pedido\""
+type item_pedido_aggregate_fields {
+    avg: item_pedido_avg_fields
+    count(columns: [item_pedido_select_column!], distinct: Boolean): Int
+    max: item_pedido_max_fields
+    min: item_pedido_min_fields
+    stddev: item_pedido_stddev_fields
+    stddev_pop: item_pedido_stddev_pop_fields
+    stddev_samp: item_pedido_stddev_samp_fields
+    sum: item_pedido_sum_fields
+    var_pop: item_pedido_var_pop_fields
+    var_samp: item_pedido_var_samp_fields
+    variance: item_pedido_variance_fields
+}
+
+"aggregate avg on columns"
+type item_pedido_avg_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"aggregate max on columns"
+type item_pedido_max_fields {
+    descricao: String
+    id: Int
+    id_pedido: Int
+    quantidade: numeric
+    valor_total: numeric
+    valor_unitario: numeric
+}
+
+"aggregate min on columns"
+type item_pedido_min_fields {
+    descricao: String
+    id: Int
+    id_pedido: Int
+    quantidade: numeric
+    valor_total: numeric
+    valor_unitario: numeric
+}
+
+"response of any mutation on the table \"item_pedido\""
+type item_pedido_mutation_response {
+    "number of affected rows by the mutation"
+    affected_rows: Int!
+    "data of the affected rows by the mutation"
+    returning: [item_pedido!]!
+}
+
+"aggregate stddev on columns"
+type item_pedido_stddev_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"aggregate stddev_pop on columns"
+type item_pedido_stddev_pop_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"aggregate stddev_samp on columns"
+type item_pedido_stddev_samp_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"aggregate sum on columns"
+type item_pedido_sum_fields {
+    id: Int
+    id_pedido: Int
+    quantidade: numeric
+    valor_total: numeric
+    valor_unitario: numeric
+}
+
+"aggregate var_pop on columns"
+type item_pedido_var_pop_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"aggregate var_samp on columns"
+type item_pedido_var_samp_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"aggregate variance on columns"
+type item_pedido_variance_fields {
+    id: Float
+    id_pedido: Float
+    quantidade: Float
+    valor_total: Float
+    valor_unitario: Float
+}
+
+"mutation root"
+type mutation_root {
+    "delete data from the table: \"item_pedido\""
+    delete_item_pedido(
+        "filter the rows which have to be deleted"
+        where: item_pedido_bool_exp!
+    ): item_pedido_mutation_response
+    "delete single row from the table: \"item_pedido\""
+    delete_item_pedido_by_pk(id: Int!): item_pedido
+    "delete data from the table: \"pedido\""
+    delete_pedido(
+        "filter the rows which have to be deleted"
+        where: pedido_bool_exp!
+    ): pedido_mutation_response
+    "delete single row from the table: \"pedido\""
+    delete_pedido_by_pk(id: Int!): pedido
+    "insert data into the table: \"item_pedido\""
+    insert_item_pedido(
+        "the rows to be inserted"
+        objects: [item_pedido_insert_input!]!,
+        "on conflict condition"
+        on_conflict: item_pedido_on_conflict
+    ): item_pedido_mutation_response
+    "insert a single row into the table: \"item_pedido\""
+    insert_item_pedido_one(
+        "the row to be inserted"
+        object: item_pedido_insert_input!,
+        "on conflict condition"
+        on_conflict: item_pedido_on_conflict
+    ): item_pedido
+    "insert data into the table: \"pedido\""
+    insert_pedido(
+        "the rows to be inserted"
+        objects: [pedido_insert_input!]!,
+        "on conflict condition"
+        on_conflict: pedido_on_conflict
+    ): pedido_mutation_response
+    "insert a single row into the table: \"pedido\""
+    insert_pedido_one(
+        "the row to be inserted"
+        object: pedido_insert_input!,
+        "on conflict condition"
+        on_conflict: pedido_on_conflict
+    ): pedido
+    "update data of the table: \"item_pedido\""
+    update_item_pedido(
+        "increments the integer columns with given value of the filtered values"
+        _inc: item_pedido_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: item_pedido_set_input,
+        "filter the rows which have to be updated"
+        where: item_pedido_bool_exp!
+    ): item_pedido_mutation_response
+    "update single row of the table: \"item_pedido\""
+    update_item_pedido_by_pk(
+        "increments the integer columns with given value of the filtered values"
+        _inc: item_pedido_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: item_pedido_set_input,
+        pk_columns: item_pedido_pk_columns_input!
+    ): item_pedido
+    "update data of the table: \"pedido\""
+    update_pedido(
+        "increments the integer columns with given value of the filtered values"
+        _inc: pedido_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: pedido_set_input,
+        "filter the rows which have to be updated"
+        where: pedido_bool_exp!
+    ): pedido_mutation_response
+    "update single row of the table: \"pedido\""
+    update_pedido_by_pk(
+        "increments the integer columns with given value of the filtered values"
+        _inc: pedido_inc_input,
+        "sets the columns of the filtered rows to the given values"
+        _set: pedido_set_input,
+        pk_columns: pedido_pk_columns_input!
+    ): pedido
+}
+
+"columns and relationships of \"pedido\""
+type pedido {
+    cliente: String!
+    data: date!
+    id: Int!
+    "An array relationship"
+    item_pedidos(
+        "distinct select on columns"
+        distinct_on: [item_pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [item_pedido_order_by!],
+        "filter the rows returned"
+        where: item_pedido_bool_exp
+    ): [item_pedido!]!
+    "An aggregated array relationship"
+    item_pedidos_aggregate(
+        "distinct select on columns"
+        distinct_on: [item_pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [item_pedido_order_by!],
+        "filter the rows returned"
+        where: item_pedido_bool_exp
+    ): item_pedido_aggregate!
+    numero: String!
+    reservar: Boolean!
+    valor_total: numeric!
+}
+
+"aggregated selection of \"pedido\""
+type pedido_aggregate {
+    aggregate: pedido_aggregate_fields
+    nodes: [pedido!]!
+}
+
+"aggregate fields of \"pedido\""
+type pedido_aggregate_fields {
+    avg: pedido_avg_fields
+    count(columns: [pedido_select_column!], distinct: Boolean): Int
+    max: pedido_max_fields
+    min: pedido_min_fields
+    stddev: pedido_stddev_fields
+    stddev_pop: pedido_stddev_pop_fields
+    stddev_samp: pedido_stddev_samp_fields
+    sum: pedido_sum_fields
+    var_pop: pedido_var_pop_fields
+    var_samp: pedido_var_samp_fields
+    variance: pedido_variance_fields
+}
+
+"aggregate avg on columns"
+type pedido_avg_fields {
+    id: Float
+    valor_total: Float
+}
+
+"aggregate max on columns"
+type pedido_max_fields {
+    cliente: String
+    data: date
+    id: Int
+    numero: String
+    valor_total: numeric
+}
+
+"aggregate min on columns"
+type pedido_min_fields {
+    cliente: String
+    data: date
+    id: Int
+    numero: String
+    valor_total: numeric
+}
+
+"response of any mutation on the table \"pedido\""
+type pedido_mutation_response {
+    "number of affected rows by the mutation"
+    affected_rows: Int!
+    "data of the affected rows by the mutation"
+    returning: [pedido!]!
+}
+
+"aggregate stddev on columns"
+type pedido_stddev_fields {
+    id: Float
+    valor_total: Float
+}
+
+"aggregate stddev_pop on columns"
+type pedido_stddev_pop_fields {
+    id: Float
+    valor_total: Float
+}
+
+"aggregate stddev_samp on columns"
+type pedido_stddev_samp_fields {
+    id: Float
+    valor_total: Float
+}
+
+"aggregate sum on columns"
+type pedido_sum_fields {
+    id: Int
+    valor_total: numeric
+}
+
+"aggregate var_pop on columns"
+type pedido_var_pop_fields {
+    id: Float
+    valor_total: Float
+}
+
+"aggregate var_samp on columns"
+type pedido_var_samp_fields {
+    id: Float
+    valor_total: Float
+}
+
+"aggregate variance on columns"
+type pedido_variance_fields {
+    id: Float
+    valor_total: Float
+}
+
+"query root"
+type query_root {
+    "fetch data from the table: \"item_pedido\""
+    item_pedido(
+        "distinct select on columns"
+        distinct_on: [item_pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [item_pedido_order_by!],
+        "filter the rows returned"
+        where: item_pedido_bool_exp
+    ): [item_pedido!]!
+    "fetch aggregated fields from the table: \"item_pedido\""
+    item_pedido_aggregate(
+        "distinct select on columns"
+        distinct_on: [item_pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [item_pedido_order_by!],
+        "filter the rows returned"
+        where: item_pedido_bool_exp
+    ): item_pedido_aggregate!
+    "fetch data from the table: \"item_pedido\" using primary key columns"
+    item_pedido_by_pk(id: Int!): item_pedido
+    "fetch data from the table: \"pedido\""
+    pedido(
+        "distinct select on columns"
+        distinct_on: [pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [pedido_order_by!],
+        "filter the rows returned"
+        where: pedido_bool_exp
+    ): [pedido!]!
+    "fetch aggregated fields from the table: \"pedido\""
+    pedido_aggregate(
+        "distinct select on columns"
+        distinct_on: [pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [pedido_order_by!],
+        "filter the rows returned"
+        where: pedido_bool_exp
+    ): pedido_aggregate!
+    "fetch data from the table: \"pedido\" using primary key columns"
+    pedido_by_pk(id: Int!): pedido
+}
+
+"subscription root"
+type subscription_root {
+    "fetch data from the table: \"item_pedido\""
+    item_pedido(
+        "distinct select on columns"
+        distinct_on: [item_pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [item_pedido_order_by!],
+        "filter the rows returned"
+        where: item_pedido_bool_exp
+    ): [item_pedido!]!
+    "fetch aggregated fields from the table: \"item_pedido\""
+    item_pedido_aggregate(
+        "distinct select on columns"
+        distinct_on: [item_pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [item_pedido_order_by!],
+        "filter the rows returned"
+        where: item_pedido_bool_exp
+    ): item_pedido_aggregate!
+    "fetch data from the table: \"item_pedido\" using primary key columns"
+    item_pedido_by_pk(id: Int!): item_pedido
+    "fetch data from the table: \"pedido\""
+    pedido(
+        "distinct select on columns"
+        distinct_on: [pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [pedido_order_by!],
+        "filter the rows returned"
+        where: pedido_bool_exp
+    ): [pedido!]!
+    "fetch aggregated fields from the table: \"pedido\""
+    pedido_aggregate(
+        "distinct select on columns"
+        distinct_on: [pedido_select_column!],
+        "limit the number of rows returned"
+        limit: Int,
+        "skip the first n rows. Use only with order_by"
+        offset: Int,
+        "sort the rows by one or more columns"
+        order_by: [pedido_order_by!],
+        "filter the rows returned"
+        where: pedido_bool_exp
+    ): pedido_aggregate!
+    "fetch data from the table: \"pedido\" using primary key columns"
+    pedido_by_pk(id: Int!): pedido
+}
+
+"unique or primary key constraints on table \"item_pedido\""
+enum item_pedido_constraint {
+    "unique or primary key constraint"
+    item_pedido_pkey
+}
+
+"select columns of table \"item_pedido\""
+enum item_pedido_select_column {
+    "column name"
+    descricao
+    "column name"
+    id
+    "column name"
+    id_pedido
+    "column name"
+    quantidade
+    "column name"
+    valor_total
+    "column name"
+    valor_unitario
+}
+
+"update columns of table \"item_pedido\""
+enum item_pedido_update_column {
+    "column name"
+    descricao
+    "column name"
+    id
+    "column name"
+    id_pedido
+    "column name"
+    quantidade
+    "column name"
+    valor_total
+    "column name"
+    valor_unitario
+}
+
+"column ordering options"
+enum order_by {
+    "in the ascending order, nulls last"
+    asc
+    "in the ascending order, nulls first"
+    asc_nulls_first
+    "in the ascending order, nulls last"
+    asc_nulls_last
+    "in the descending order, nulls first"
+    desc
+    "in the descending order, nulls first"
+    desc_nulls_first
+    "in the descending order, nulls last"
+    desc_nulls_last
+}
+
+"unique or primary key constraints on table \"pedido\""
+enum pedido_constraint {
+    "unique or primary key constraint"
+    pedido_pkey
+}
+
+"select columns of table \"pedido\""
+enum pedido_select_column {
+    "column name"
+    cliente
+    "column name"
+    data
+    "column name"
+    id
+    "column name"
+    numero
+    "column name"
+    reservar
+    "column name"
+    valor_total
+}
+
+"update columns of table \"pedido\""
+enum pedido_update_column {
+    "column name"
+    cliente
+    "column name"
+    data
+    "column name"
+    id
+    "column name"
+    numero
+    "column name"
+    reservar
+    "column name"
+    valor_total
+}
+
+"expression to compare columns of type Boolean. All fields are combined with logical 'AND'."
+input Boolean_comparison_exp {
+    _eq: Boolean
+    _gt: Boolean
+    _gte: Boolean
+    _in: [Boolean!]
+    _is_null: Boolean
+    _lt: Boolean
+    _lte: Boolean
+    _neq: Boolean
+    _nin: [Boolean!]
+}
+
+"expression to compare columns of type Int. All fields are combined with logical 'AND'."
+input Int_comparison_exp {
+    _eq: Int
+    _gt: Int
+    _gte: Int
+    _in: [Int!]
+    _is_null: Boolean
+    _lt: Int
+    _lte: Int
+    _neq: Int
+    _nin: [Int!]
+}
+
+"expression to compare columns of type String. All fields are combined with logical 'AND'."
+input String_comparison_exp {
+    _eq: String
+    _gt: String
+    _gte: String
+    _ilike: String
+    _in: [String!]
+    _is_null: Boolean
+    _like: String
+    _lt: String
+    _lte: String
+    _neq: String
+    _nilike: String
+    _nin: [String!]
+    _nlike: String
+    _nsimilar: String
+    _similar: String
+}
+
+"expression to compare columns of type date. All fields are combined with logical 'AND'."
+input date_comparison_exp {
+    _eq: date
+    _gt: date
+    _gte: date
+    _in: [date!]
+    _is_null: Boolean
+    _lt: date
+    _lte: date
+    _neq: date
+    _nin: [date!]
+}
+
+"order by aggregate values of table \"item_pedido\""
+input item_pedido_aggregate_order_by {
+    avg: item_pedido_avg_order_by
+    count: order_by
+    max: item_pedido_max_order_by
+    min: item_pedido_min_order_by
+    stddev: item_pedido_stddev_order_by
+    stddev_pop: item_pedido_stddev_pop_order_by
+    stddev_samp: item_pedido_stddev_samp_order_by
+    sum: item_pedido_sum_order_by
+    var_pop: item_pedido_var_pop_order_by
+    var_samp: item_pedido_var_samp_order_by
+    variance: item_pedido_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"item_pedido\""
+input item_pedido_arr_rel_insert_input {
+    data: [item_pedido_insert_input!]!
+    on_conflict: item_pedido_on_conflict
+}
+
+"order by avg() on columns of table \"item_pedido\""
+input item_pedido_avg_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"Boolean expression to filter rows from the table \"item_pedido\". All fields are combined with a logical 'AND'."
+input item_pedido_bool_exp {
+    _and: [item_pedido_bool_exp]
+    _not: item_pedido_bool_exp
+    _or: [item_pedido_bool_exp]
+    descricao: String_comparison_exp
+    id: Int_comparison_exp
+    id_pedido: Int_comparison_exp
+    quantidade: numeric_comparison_exp
+    valor_total: numeric_comparison_exp
+    valor_unitario: numeric_comparison_exp
+}
+
+"input type for incrementing integer column in table \"item_pedido\""
+input item_pedido_inc_input {
+    id: Int
+    id_pedido: Int
+    quantidade: numeric
+    valor_total: numeric
+    valor_unitario: numeric
+}
+
+"input type for inserting data into table \"item_pedido\""
+input item_pedido_insert_input {
+    descricao: String
+    id: Int
+    id_pedido: Int
+    quantidade: numeric
+    valor_total: numeric
+    valor_unitario: numeric
+}
+
+"order by max() on columns of table \"item_pedido\""
+input item_pedido_max_order_by {
+    descricao: order_by
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by min() on columns of table \"item_pedido\""
+input item_pedido_min_order_by {
+    descricao: order_by
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"input type for inserting object relation for remote table \"item_pedido\""
+input item_pedido_obj_rel_insert_input {
+    data: item_pedido_insert_input!
+    on_conflict: item_pedido_on_conflict
+}
+
+"on conflict condition type for table \"item_pedido\""
+input item_pedido_on_conflict {
+    constraint: item_pedido_constraint!
+    update_columns: [item_pedido_update_column!]!
+    where: item_pedido_bool_exp
+}
+
+"ordering options when selecting data from \"item_pedido\""
+input item_pedido_order_by {
+    descricao: order_by
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"primary key columns input for table: \"item_pedido\""
+input item_pedido_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"item_pedido\""
+input item_pedido_set_input {
+    descricao: String
+    id: Int
+    id_pedido: Int
+    quantidade: numeric
+    valor_total: numeric
+    valor_unitario: numeric
+}
+
+"order by stddev() on columns of table \"item_pedido\""
+input item_pedido_stddev_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by stddev_pop() on columns of table \"item_pedido\""
+input item_pedido_stddev_pop_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by stddev_samp() on columns of table \"item_pedido\""
+input item_pedido_stddev_samp_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by sum() on columns of table \"item_pedido\""
+input item_pedido_sum_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by var_pop() on columns of table \"item_pedido\""
+input item_pedido_var_pop_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by var_samp() on columns of table \"item_pedido\""
+input item_pedido_var_samp_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"order by variance() on columns of table \"item_pedido\""
+input item_pedido_variance_order_by {
+    id: order_by
+    id_pedido: order_by
+    quantidade: order_by
+    valor_total: order_by
+    valor_unitario: order_by
+}
+
+"expression to compare columns of type numeric. All fields are combined with logical 'AND'."
+input numeric_comparison_exp {
+    _eq: numeric
+    _gt: numeric
+    _gte: numeric
+    _in: [numeric!]
+    _is_null: Boolean
+    _lt: numeric
+    _lte: numeric
+    _neq: numeric
+    _nin: [numeric!]
+}
+
+"order by aggregate values of table \"pedido\""
+input pedido_aggregate_order_by {
+    avg: pedido_avg_order_by
+    count: order_by
+    max: pedido_max_order_by
+    min: pedido_min_order_by
+    stddev: pedido_stddev_order_by
+    stddev_pop: pedido_stddev_pop_order_by
+    stddev_samp: pedido_stddev_samp_order_by
+    sum: pedido_sum_order_by
+    var_pop: pedido_var_pop_order_by
+    var_samp: pedido_var_samp_order_by
+    variance: pedido_variance_order_by
+}
+
+"input type for inserting array relation for remote table \"pedido\""
+input pedido_arr_rel_insert_input {
+    data: [pedido_insert_input!]!
+    on_conflict: pedido_on_conflict
+}
+
+"order by avg() on columns of table \"pedido\""
+input pedido_avg_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"Boolean expression to filter rows from the table \"pedido\". All fields are combined with a logical 'AND'."
+input pedido_bool_exp {
+    _and: [pedido_bool_exp]
+    _not: pedido_bool_exp
+    _or: [pedido_bool_exp]
+    cliente: String_comparison_exp
+    data: date_comparison_exp
+    id: Int_comparison_exp
+    item_pedidos: item_pedido_bool_exp
+    numero: String_comparison_exp
+    reservar: Boolean_comparison_exp
+    valor_total: numeric_comparison_exp
+}
+
+"input type for incrementing integer column in table \"pedido\""
+input pedido_inc_input {
+    id: Int
+    valor_total: numeric
+}
+
+"input type for inserting data into table \"pedido\""
+input pedido_insert_input {
+    cliente: String
+    data: date
+    id: Int
+    item_pedidos: item_pedido_arr_rel_insert_input
+    numero: String
+    reservar: Boolean
+    valor_total: numeric
+}
+
+"order by max() on columns of table \"pedido\""
+input pedido_max_order_by {
+    cliente: order_by
+    data: order_by
+    id: order_by
+    numero: order_by
+    valor_total: order_by
+}
+
+"order by min() on columns of table \"pedido\""
+input pedido_min_order_by {
+    cliente: order_by
+    data: order_by
+    id: order_by
+    numero: order_by
+    valor_total: order_by
+}
+
+"input type for inserting object relation for remote table \"pedido\""
+input pedido_obj_rel_insert_input {
+    data: pedido_insert_input!
+    on_conflict: pedido_on_conflict
+}
+
+"on conflict condition type for table \"pedido\""
+input pedido_on_conflict {
+    constraint: pedido_constraint!
+    update_columns: [pedido_update_column!]!
+    where: pedido_bool_exp
+}
+
+"ordering options when selecting data from \"pedido\""
+input pedido_order_by {
+    cliente: order_by
+    data: order_by
+    id: order_by
+    item_pedidos_aggregate: item_pedido_aggregate_order_by
+    numero: order_by
+    reservar: order_by
+    valor_total: order_by
+}
+
+"primary key columns input for table: \"pedido\""
+input pedido_pk_columns_input {
+    id: Int!
+}
+
+"input type for updating data in table \"pedido\""
+input pedido_set_input {
+    cliente: String
+    data: date
+    id: Int
+    numero: String
+    reservar: Boolean
+    valor_total: numeric
+}
+
+"order by stddev() on columns of table \"pedido\""
+input pedido_stddev_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"order by stddev_pop() on columns of table \"pedido\""
+input pedido_stddev_pop_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"order by stddev_samp() on columns of table \"pedido\""
+input pedido_stddev_samp_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"order by sum() on columns of table \"pedido\""
+input pedido_sum_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"order by var_pop() on columns of table \"pedido\""
+input pedido_var_pop_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"order by var_samp() on columns of table \"pedido\""
+input pedido_var_samp_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+"order by variance() on columns of table \"pedido\""
+input pedido_variance_order_by {
+    id: order_by
+    valor_total: order_by
+}
+
+
+scalar date
+
+scalar numeric
