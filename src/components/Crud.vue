@@ -56,16 +56,18 @@
                     <td>
                       <v-text-field v-model="item.quantidade" type="number"
                         :rules="[required('Quantidade')]"
+                        @change="calculateLineValue(item)"
                       ></v-text-field>
                     </td>
                     <td>
                       <v-text-field v-model="item.valor_unitario" type="number"
                         :rules="[required('Valor Unitário')]"
+                        @change="calculateLineValue(item)"
                       ></v-text-field>
                     </td>
                     <td>
                       <v-text-field v-model="item.valor_total" type="number"
-                        :rules="[required('Valor Total')]"
+                        readonly
                       ></v-text-field>
                     </td>
                     <td>
@@ -77,8 +79,8 @@
                 </tbody>
               </template>
             </v-simple-table>
-          <v-text-field v-model="model.valor_total"
-            :rules="[required('Valor Total')]"
+          <v-text-field v-model="this.calculateTotalValue"
+            readonly
             prefix="R$"
             label="Valor Total"></v-text-field>
            <v-btn
@@ -132,7 +134,7 @@ export default {
         cliente :'',
         numero : '',
         data : new Date().toISOString().substring(0,10),
-        valor_total: '',
+        valor_total: Number(0),
         itens:[{
           descricao: '',
           quantidade: Number(0),
@@ -145,6 +147,11 @@ export default {
     methods: {
       validateField () {
         this.$refs.form.validate()
+      },
+      calculateLineValue(line){
+        if (line.quantidade && line.valor_unitario){
+          line.valor_total = line.quantidade * line.valor_unitario;
+        }
       },
       addItem(){
         this.model.itens.push({
@@ -170,5 +177,15 @@ export default {
         })
       }
     },
+    computed: {
+      calculateTotalValue: function(){
+        var i;
+        var retorno = Number(0)
+        for (i = 0; i < this.model.itens.length; i++) {
+            retorno += this.model.itens[i].valor_total
+        }
+        return retorno
+      }
+    }
 }
 </script>
