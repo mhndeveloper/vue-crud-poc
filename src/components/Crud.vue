@@ -49,7 +49,7 @@
               </thead>
               <tbody>
               <tr
-                v-for="item in model.itens" :key="item.index">
+                v-for="(item, index) in model.itens" :key="item.index">
                 <td>
                   <v-text-field v-model="item.descricao"
                                 counter="50"
@@ -59,18 +59,18 @@
                 <td>
                   <v-text-field v-model="item.quantidade" type="number"
                                 :rules="[required('Quantidade')]"
-                                @change="calculateLineValue(item)"
                   ></v-text-field>
                 </td>
                 <td>
                   <v-text-field v-model="item.valor_unitario" type="number"
                                 :rules="[required('Valor Unitário')]"
-                                @change="calculateLineValue(item)"
                   ></v-text-field>
                 </td>
                 <td>
-                  <v-text-field  v-bind:value="item.quantidade * item.valor_unitario" type="number"
-                                readonly
+                  <v-text-field
+                    v-bind:value="calculaItem(index)"
+                    type="number"
+                    readonly
                   ></v-text-field>
 
                 </td>
@@ -153,11 +153,6 @@ export default {
     validateField() {
       this.$refs.form.validate();
     },
-    calculateLineValue(line){
-      if (line.quantidade && line.valor_unitario){
-        line.valor_total = line.quantidade * line.valor_unitario;
-      }
-    },
     addItem() {
       this.model.itens.push({
         descricao: "",
@@ -180,17 +175,21 @@ export default {
           item_pedidos: this.model.itens
         }
       });
-    }
+    },
+    calculaItem(index) {
+      const item = this.model.itens[index];
+      item.valor_total = item.quantidade * item.valor_unitario;
+      return item.valor_total
+    },
   },
+
   computed: {
     calculateTotalValue() {
       return this.model.itens
         .map(value => value.valor_total)
         .reduce((accumulator, currentValue) => accumulator + currentValue);
     },
-    calculateTotalIndividual: function() {
-      return 1;
-    }
   }
+
 };
 </script>
